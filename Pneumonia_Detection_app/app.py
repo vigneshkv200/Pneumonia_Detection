@@ -74,11 +74,17 @@ st.markdown(
 MODEL_PATH = "pneumonia_mobilenetv2_finetuned.keras"
 IMAGE_SIZE = (224, 224)
 
+from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 
 @st.cache_resource
 def load_model():
-    return tf.keras.models.load_model(MODEL_PATH)
-
+    return tf.keras.models.load_model(
+        MODEL_PATH,
+        custom_objects={
+            "preprocess_input": preprocess_input
+        },
+        safe_mode=False
+    )
 
 try:
     model = load_model()
