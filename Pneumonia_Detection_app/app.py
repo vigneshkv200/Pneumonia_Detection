@@ -153,10 +153,7 @@ if uploaded_file is not None:
                     image_array,
                     verbose=0
                 )
-                st.write("Raw model output:", prediction.tolist())
-                st.write("Input shape:", image_array.shape)
-                st.write("Minimum pixel value:", float(image_array.min()))
-                st.write("Maximum pixel value:", float(image_array.max()))
+                
 
                 pneumonia_probability = float(
                     np.asarray(prediction).reshape(-1)[0]
