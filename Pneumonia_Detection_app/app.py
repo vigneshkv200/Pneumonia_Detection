@@ -82,11 +82,9 @@ def load_model():
 
 try:
     model = load_model()
-except Exception:
-    st.error(
-        "The trained model could not be loaded. "
-        "Please check the model file and dependencies."
-    )
+except Exception as e:
+    st.error("The trained model could not be loaded.")
+    st.code(f"{type(e).__name__}: {e}")
     st.stop()
 
 # --------------------------------------------------
